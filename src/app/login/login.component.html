@@ -1,0 +1,45 @@
+<ion-app>
+  <app-header></app-header>
+  <ion-content>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col sizeMd="6" offsetMd="3" padding-vertical>
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>
+                Log In:
+              </ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <form (ngSubmit)="logIn()" [formGroup]="loginForm">
+                <ion-item>
+                  <ion-label position="stacked">Email:</ion-label>
+                  <ion-input formControlName="email" [(ngModel)]="login.email" type="text" name="email"></ion-input>
+                </ion-item>
+                <div *ngIf="!loginForm.controls.email.valid && loginForm.controls.email.dirty">
+                  Please enter a valid email.
+                </div>
+                <ion-item>
+                  <ion-label position="stacked">Password:</ion-label>
+                  <ion-input formControlName="password" [(ngModel)]="login.password" type="password" name="password"></ion-input>
+                </ion-item>
+                <ion-button [disabled]="!loginForm.valid" margin-top expand="block" type="submit" class="ion-no-margin">Log In</ion-button>
+              </form>
+              <br>
+              <div class="ion-float-end ion-margin-bottom">
+                <small>Don't Have an Account? <a href="#">Sign Up Here</a></small>
+              </div>
+
+
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+
+
+
+  </ion-content>
+</ion-app>

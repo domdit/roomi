@@ -1,0 +1,42 @@
+<ion-app>
+  <app-header></app-header>
+  <ion-content padding>
+    <h1>Groups</h1>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col sizeMd="6" offsetMd="3">
+
+
+          <ion-card *ngIf="groups == null">
+            <ion-card-content>
+              <h2>Uh-Oh!</h2>
+              <p>It seems like you are not a part of any groups! Click the red plus button below to create your own!</p>
+            </ion-card-content>
+          </ion-card>
+
+          <ion-list *ngFor="let group of groups | keyvalue">
+            <ion-item>
+              <ion-label><h3>{{group.key}}</h3></ion-label>
+            </ion-item>
+          </ion-list>
+
+
+
+
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-fab vertical="bottom" horizontal="end">
+      <ion-fab-button (click)="openModal()" color="danger">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+
+
+  </ion-content>
+  <app-tabs></app-tabs>
+</ion-app>
+

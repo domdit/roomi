@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title color="primary">Create New Pocket</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">Close</ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form (ngSubmit)="createGroup()" [formGroup]="createGroupForm">
+    <ion-item>
+      <ion-label position="stacked">Group Name:</ion-label>
+      <ion-input formControlName="name" [(ngModel)]="data.name" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position>Amount of People in Group:</ion-label>
+      <ion-select formControlName="numberOfInvites" (ionChange)="onChangeInvites($event)">
+        <div *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]">
+          <ion-select-option value="{{i}}">{{i}}</ion-select-option>
+        </div>
+      </ion-select>
+    </ion-item>
+
+    <div *ngFor="let invite of t.controls; let i = index" formArrayName="invites">
+      <ion-item>
+        <ion-label position="stacked">Member {{i + 1}}</ion-label>
+        <ion-input formControlName="invite" type="text"></ion-input>
+      </ion-item>
+
+    </div>
+
+
+    <ion-button [disabled]="!createGroupForm.valid" margin-top expand="block" type="submit" class="ion-no-margin">Create Group</ion-button>
+  </form>
+
+</ion-content>

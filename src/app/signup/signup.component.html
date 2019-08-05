@@ -1,0 +1,69 @@
+<ion-app>
+  <app-header></app-header>
+  <ion-content>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col sizeMd="6" offsetMd="3" padding-vertical>
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>
+                Sign Up:
+              </ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <form (ngSubmit)="signUp()" [formGroup]="registerForm">
+                <ion-item>
+                  <ion-label position="stacked">Email:</ion-label>
+                  <ion-input formControlName="email" [(ngModel)]="register.email" type="text" name="email"></ion-input>
+                </ion-item>
+                <div *ngIf="!registerForm.controls.email.valid && registerForm.controls.email.dirty">
+                  Please enter a valid email.
+                </div>
+                <ion-item>
+                  <ion-label position="stacked">Password:</ion-label>
+                  <ion-input formControlName="password" [(ngModel)]="register.password" type="password" name="password"></ion-input>
+                </ion-item>
+                <div *ngIf="!registerForm.controls.password.valid && registerForm.controls.password.dirty">
+                  Password must be at least 6 characters.
+                </div>
+                <ion-item>
+                  <ion-label position="stacked">Confirm Password:</ion-label>
+                  <ion-input formControlName="confirm" [(ngModel)]="register.confirm" type="password" name="confirm"></ion-input>
+                </ion-item>
+                <div *ngIf="registerForm.hasError('notSame')">
+                  Passwords must match.
+                </div>
+                <ion-item>
+                  <ion-label position="stacked">First Name:</ion-label>
+                  <ion-input formControlName="first" [(ngModel)]="register.first" type="text" name="first"></ion-input>
+                </ion-item>
+                <div *ngIf="!registerForm.controls.first.valid && registerForm.controls.first.dirty">
+                  This field is required.
+                </div>
+                <ion-item>
+                  <ion-label position="stacked">Last Name:</ion-label>
+                  <ion-input formControlName="last" [(ngModel)]="register.last" type="text" name="last"></ion-input>
+                </ion-item>
+                <div *ngIf="!registerForm.controls.last.valid && registerForm.controls.last.dirty">
+                  This field is required.
+                </div>
+                <ion-button [disabled]="!registerForm.valid" margin-top expand="block" type="submit" class="ion-no-margin">Create Account</ion-button>
+              </form>
+              <br>
+              <div class="ion-float-end ion-margin-bottom">
+                <small>Already Have an Account? <a href="#">Log In Here</a></small>
+              </div>
+
+
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+
+
+
+  </ion-content>
+</ion-app>
